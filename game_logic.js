@@ -52,7 +52,32 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame()
+{
+    for (i = 0; i < 5; i++)
+    {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
+
+    console.log(`Computer's score: ${computerScore}`);
+    console.log(`Your score: ${humanScore}`);
+
+    if (humanScore > computerScore)
+    {
+        console.log("Congratulations, you win!")
+    }
+    else if (humanScore < computerScore)
+    {
+        console.log("You lose! Please try again.")
+    }
+    else
+    {
+        console.log("It's a tie! Please try again.")
+    }
+}
+
+playGame();
+
