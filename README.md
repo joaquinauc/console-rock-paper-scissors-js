@@ -1,6 +1,6 @@
 <h1>Console Rock Paper Scissors Game</h1>
 <p>
-    This project is a simple Rock, Paper, Scissors console game made with javascript.
+    This project is a simple Rock, Paper, Scissors console game made with javascript. I used the Math class to apply the random method, and the string class to apply the toLowerCase method.
 </p>
 
 <h2>What I Learned</h2>
