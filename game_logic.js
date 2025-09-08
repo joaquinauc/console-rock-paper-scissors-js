@@ -30,3 +30,11 @@ function playRound(humanChoice, computerChoice)
         console.log(`It's a tie! ${humanChoiceString} doesn't beat ${computerChoiceString}`);
     }
 }
+
+const gameButtons = document.querySelectorAll(".btn");
+
+gameButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(Number(button.value), getComputerChoice())
+    });
+});
