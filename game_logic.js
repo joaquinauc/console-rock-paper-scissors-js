@@ -4,6 +4,10 @@ let computerScore = 0;
 const divHumanScore = document.querySelector(".human-score");
 const divComputerScore = document.querySelector(".computer-score");
 
+const divComputerChoice = document.querySelector(".computer-choice");
+const divRoundResult = document.querySelector(".round");
+const divGameResult = document.querySelector(".game");
+
 function getComputerChoice()
 {
     return Math.ceil(Math.random() * 3);
@@ -16,42 +20,42 @@ function playRound(humanChoice, computerChoice)
     let humanChoiceString = gameOptions[humanChoice - 1];
     let computerChoiceString = gameOptions[computerChoice - 1];
 
-    console.log(`The computer chose: ${computerChoiceString}`)
+    divComputerChoice.textContent = `The computer chose: ${computerChoiceString}`;
 
     let roundResult = humanChoice - computerChoice;
 
     if (roundResult == 1 || roundResult == -2)
     {
         humanScore++;
-        console.log(`You win! ${humanChoiceString} beats ${computerChoiceString}`);
+        divRoundResult.textContent = `You won the round! ${humanChoiceString} beats ${computerChoiceString}`;
     }
     else if (roundResult == 2 || roundResult == -1)
     {
         computerScore++;
-        console.log(`You lose! ${computerChoiceString} beats ${humanChoiceString}`);
+        divRoundResult.textContent = `You lost the round! ${computerChoiceString} beats ${humanChoiceString}`;
     }
     else
     {
-        console.log(`It's a tie! ${humanChoiceString} doesn't beat ${computerChoiceString}`);
+        divRoundResult.textContent = `The round is a tie! ${humanChoiceString} doesn't beat ${computerChoiceString}`;
     }
 
-    console.log(humanScore);
-    console.log(computerScore);
+    divHumanScore.textContent = `Human's Score: ${humanScore}`;
+    divComputerScore.textContent = `Computer's Score: ${computerScore}`;
 }
 
 function checkWinner()
 {
     if (humanScore >= 5)
     {
-        console.log("Congratulations! You win")
         humanScore = 0;
         computerScore = 0;
+        divGameResult.textContent = "Congratulations! You won the game."
     }
     else if (computerScore >= 5)
     {
-        console.log("You lose! Please try again")
         humanScore = 0;
         computerScore = 0;
+        divGameResult.textContent = "You lost the game! Please try again."
     }
 }
 
@@ -60,9 +64,11 @@ const gameButtons = document.querySelectorAll(".btn");
 gameButtons.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(Number(button.value), getComputerChoice());
-        checkWinner();
 
-        divHumanScore.textContent = `Human's Score: ${humanScore}`;
-        divComputerScore.textContent = `Computer's Score: ${computerScore}`;
+        if (humanScore >= 5 || computerScore >= 5)
+        {
+            divRoundResult.textContent = "";
+            checkWinner();
+        }
     });
 });
