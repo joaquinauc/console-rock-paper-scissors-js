@@ -41,6 +41,7 @@ function playRound(humanChoice, computerChoice)
 
     divHumanScore.textContent = `Human's Score: ${humanScore}`;
     divComputerScore.textContent = `Computer's Score: ${computerScore}`;
+    divGameResult.textContent = "";
 }
 
 function checkWinner()
