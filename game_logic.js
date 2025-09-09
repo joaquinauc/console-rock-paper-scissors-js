@@ -28,15 +28,18 @@ function playRound(humanChoice, computerChoice)
     {
         humanScore++;
         divRoundResult.textContent = `You won the round! ${humanChoiceString} beats ${computerChoiceString}`;
+        divRoundResult.setAttribute("style", "color: #1f733a")
     }
     else if (roundResult == 2 || roundResult == -1)
     {
         computerScore++;
         divRoundResult.textContent = `You lost the round! ${computerChoiceString} beats ${humanChoiceString}`;
+        divRoundResult.setAttribute("style", "color: #a53232")
     }
     else
     {
         divRoundResult.textContent = `The round is a tie! ${humanChoiceString} doesn't beat ${computerChoiceString}`;
+        divRoundResult.setAttribute("style", "color: #949026ff")
     }
 
     divHumanScore.textContent = `Human's Score: ${humanScore}`;
@@ -51,12 +54,14 @@ function checkWinner()
         humanScore = 0;
         computerScore = 0;
         divGameResult.textContent = "Congratulations! You won the game."
+        divGameResult.setAttribute("style", "color: #1f733a")
     }
     else if (computerScore >= 5)
     {
         humanScore = 0;
         computerScore = 0;
         divGameResult.textContent = "You lost the game! Please try again."
+        divGameResult.setAttribute("style", "color: #a53232")
     }
 }
 
