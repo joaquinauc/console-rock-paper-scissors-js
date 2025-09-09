@@ -15,12 +15,14 @@ function playRound(humanChoice, computerChoice)
 
     console.log(`The computer chose: ${computerChoiceString}`)
 
-    if (humanChoice > computerChoice)
+    let roundResult = humanChoice - computerChoice;
+
+    if (roundResult == 1 || roundResult == -2)
     {
         humanScore++;
         console.log(`You win! ${humanChoiceString} beats ${computerChoiceString}`);
     }
-    else if (humanChoice < computerChoice)
+    else if (roundResult == 2 || roundResult == -1)
     {
         computerScore++;
         console.log(`You lose! ${computerChoiceString} beats ${humanChoiceString}`);
@@ -29,6 +31,9 @@ function playRound(humanChoice, computerChoice)
     {
         console.log(`It's a tie! ${humanChoiceString} doesn't beat ${computerChoiceString}`);
     }
+
+    console.log(humanScore);
+    console.log(computerScore);
 }
 
 const gameButtons = document.querySelectorAll(".btn");
