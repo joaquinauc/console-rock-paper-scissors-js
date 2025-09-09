@@ -36,23 +36,27 @@ function playRound(humanChoice, computerChoice)
     console.log(computerScore);
 }
 
+function checkWinner()
+{
+    if (humanScore >= 5)
+    {
+        console.log("Congratulations! You win")
+        humanScore = 0;
+        computerScore = 0;
+    }
+    else if (computerScore >= 5)
+    {
+        console.log("You lose! Please try again")
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
+
 const gameButtons = document.querySelectorAll(".btn");
 
 gameButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        playRound(Number(button.value), getComputerChoice())
+        playRound(Number(button.value), getComputerChoice());
+        checkWinner();
     });
 });
-
-if (humanScore >= 5)
-{
-    console.log("Congratulations! You win")
-    humanScore = 0;
-    computerScore = 0;
-}
-else if (computerScore >= 5)
-{
-    console.log("You lose! Please try again")
-    humanScore = 0;
-    computerScore = 0;
-}
