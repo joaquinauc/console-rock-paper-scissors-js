@@ -1,6 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const divHumanScore = document.querySelector(".human-score");
+const divComputerScore = document.querySelector(".computer-score");
+
 function getComputerChoice()
 {
     return Math.ceil(Math.random() * 3);
@@ -58,5 +61,8 @@ gameButtons.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(Number(button.value), getComputerChoice());
         checkWinner();
+
+        divHumanScore.textContent = `Human's Score: ${humanScore}`;
+        divComputerScore.textContent = `Computer's Score: ${computerScore}`;
     });
 });
