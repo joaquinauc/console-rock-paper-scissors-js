@@ -38,3 +38,16 @@ gameButtons.forEach((button) => {
         playRound(Number(button.value), getComputerChoice())
     });
 });
+
+if (humanScore >= 5)
+{
+    console.log("Congratulations! You win")
+    humanScore = 0;
+    computerScore = 0;
+}
+else if (computerScore >= 5)
+{
+    console.log("You lose! Please try again")
+    humanScore = 0;
+    computerScore = 0;
+}
